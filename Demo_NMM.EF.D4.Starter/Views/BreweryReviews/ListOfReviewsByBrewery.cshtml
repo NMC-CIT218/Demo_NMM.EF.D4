@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Demo_NMM.EF.Models.BreweryReview>
+
+@{
+    ViewBag.Title = "Brewery Reviews";
+
+    // cast the dynamic object to access the Brewery properties
+    var brewery = (Demo_NMM.EF.Models.Brewery)ViewBag.Brewery;
+}
+
+<h2>Brewery Reviews for @brewery.Name</h2>
+
+<table class="table">
+
+    @foreach (var review in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => review.DateCreated) <br />
+                @Html.DisplayFor(modelItem => review.Content) <br />
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.ActionLink("Add a Review", "UserCreate", "BreweryReviews", new { breweryID = brewery.ID }, null) 
+<br />
+@Html.ActionLink("Return to brewery list", "ListBreweries", "Breweries")

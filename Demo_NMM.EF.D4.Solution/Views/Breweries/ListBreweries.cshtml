@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Demo_NMM.EF.Models.Brewery>
+
+@{
+    ViewBag.Title = "ListBreweries";
+}
+
+<h2>Microbreweries in Northern Michigan</h2>
+
+@{Html.BeginForm("Search", "Breweries", FormMethod.Get);}
+    <input type="text" name="q" value="" />
+    <input type="submit" value="Search" />
+@{Html.EndForm();}
+
+&nbsp; 
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Details", new { id = item.ID }) <br />
+                @Html.DisplayFor(modelItem => item.City) <br />
+                @Html.DisplayFor(modelItem => item.Phone) <br />
+                <a href="http://@item.URL">@item.URL</a> <br />
+                @Html.ActionLink("Reviews", "ListOfReviewsByBrewery", "BreweryReviews", new { id = item.ID}, null)
+            </td>
+        </tr>
+    }
+
+</table>

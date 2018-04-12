@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Northern Michigan Microbreweries</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <h2>Brewery Info</h2>
+        @Html.ActionLink("Click here for a list of local microbreweries.", "ListBreweries", "Breweries")
+    </div>
+    <div class="col-md-4">
+        <h2>Up Coming Events</h2>
+        <strong>Brew Fest</strong><br />
+        Empire, MI<br />
+        July 15, 2016
+    </div>
+</div>
